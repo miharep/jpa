@@ -16,7 +16,7 @@ import web.service.UserService;
 @Controller
 public class UsersController {
     
-    final UserService userService;
+    private final UserService userService;
     
     @Autowired
     public UsersController(UserService userService) {

@@ -1,6 +1,5 @@
 package web.service;
 
-import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +9,7 @@ import web.model.User;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService, SmartInitializingSingleton {
+public class UserServiceImpl implements UserService {
     
     private final UserDao userDao;
     
@@ -41,15 +40,6 @@ public class UserServiceImpl implements UserService, SmartInitializingSingleton 
     @Transactional
     public void updateUser(User editUser, Long id) {
         userDao.updateUser(editUser, id);
-    }
-    
-    @Override
-    @Transactional
-    public void afterSingletonsInstantiated() {
-        userDao.addUser(new User("Name1", "Lastname1", "user1@mail.ru"));
-        userDao.addUser(new User("Name2", "Lastname2", "user2@mail.ru"));
-        userDao.addUser(new User("Name3", "Lastname3", "user3@mail.ru"));
-        userDao.addUser(new User("Name4", "Lastname4", "user4@mail.ru"));
     }
     
     @Override
