@@ -34,12 +34,12 @@ public class JpaConfig {
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(
-                env.getProperty("jakarta.persistence.jdbc.driver"));
-        dataSource.setUrl(env.getProperty("jakarta.persistence.jdbc.url"));
+                env.getProperty("javax.persistence.jdbc.driver"));
+        dataSource.setUrl(env.getProperty("javax.persistence.jdbc.url"));
         dataSource.setUsername(
-                env.getProperty("jakarta.persistence.jdbc.user"));
+                env.getProperty("javax.persistence.jdbc.user"));
         dataSource.setPassword(
-                env.getProperty("jakarta.persistence.jdbc.password"));
+                env.getProperty("javax.persistence.jdbc.password"));
         return dataSource;
     }
     
@@ -50,9 +50,9 @@ public class JpaConfig {
         emf.setDataSource(getDataSource());
         
         Properties props=new Properties();
-        props.put("jakarta.persistence.schema-generation.database.action",
+        props.put("javax.persistence.schema-generation.database.action",
                 env.getProperty(
-                        "jakarta.persistence.schema-generation.database.action"));
+                        "javax.persistence.schema-generation.database.action"));
         props.put("hibernate.show_sql",
                 env.getProperty("hibernate.show_sql"));
         props.put("hibernate.format_sql",
